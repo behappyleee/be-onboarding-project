@@ -67,6 +67,6 @@ kotlin {
     }
 }
 
-tasks.withType<BootJar> {
+tasks.getByName<BootJar>("bootJar") {
     enabled = false
 }

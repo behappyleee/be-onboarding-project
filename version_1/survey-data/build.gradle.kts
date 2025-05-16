@@ -20,6 +20,10 @@ allOpen {
     annotation("jakarta.persistence.Embeddable")
 }
 
-tasks.withType<BootJar> {
+tasks.getByName<BootJar>("bootJar") {
     enabled = false
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = true
 }

@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 val kotlinJacksonDateTimeVersion by properties
 val swaggerOpenApiVersion by properties
 val swaggerAnnotationVersion by properties
@@ -24,4 +26,17 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.getByName<BootJar>("bootJar") {
+    enabled = true
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
+}
+
+tasks.getByName<BootJar>("bootJar") {
+    archiveBaseName.set("my-survey")
+    mainClass.set("com.ic.surveyapi.SurveyApiApplication")
 }
